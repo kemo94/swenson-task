@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Currency App</string>
+    <string name="access_token">106d1a55cb64391973f7cf85465a35dd</string>
+    <string name="internet_connection_error">no internet connection</string>
+
+    <string name="currency_calculator">Currency Calculator</string>
+    <string name="search_currency">Search for currency</string>
+    <string name="no_currency">No currency to view</string>
+    <string name="eur">EUR</string>
+</resources>

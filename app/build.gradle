@@ -1,0 +1,15 @@
+apply plugin: 'com.android.application'
+apply from: "$project.rootDir/tools/gradle/base.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.swenson.task"
+        multiDexEnabled true
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':CurrencyModule')
+    implementation project(path: ':BaseModule')
+}

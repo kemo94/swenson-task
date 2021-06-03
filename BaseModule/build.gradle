@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+apply from: "$project.rootDir/tools/gradle/base.gradle"
+
+android {
+
+    defaultConfig {
+        versionName = "1.0.0"
+        versionCode = 1
+    }
+    project.android.libraryVariants.all { variant ->
+        def url = project.ext."${variant.buildType.name}_base_url"
+        variant.buildConfigField('String', 'BASE_URL', "\"${url}\"")
+    }
+}
+dependencies {
+
+}

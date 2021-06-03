@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.swenson.currencymodule.platform.view.currency.CurrencyViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.swenson.currencymodule.platform.view.currency.CurrencyFragment" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/toolbar_home" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_currency_edt"
+            style="@style/MediumText"
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:paddingTop="8dp"
+            android:hint="@string/search_currency"
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/currency_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_currency_edt"
+            tools:listitem="@layout/item_currency" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/empty_view"
+            style="@style/MediumText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:text="@string/no_currency"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

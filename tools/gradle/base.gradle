@@ -1,0 +1,117 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 66
+        versionName "2.0.20"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'swenson'
+            keyPassword '123456'
+            storeFile file("$rootDir/swenson.jks")
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+
+}
+
+dependencies {
+    //kotlin
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coreCoroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coreCoroutinesVersion"
+    /* coroutines support for firebase operations */
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+
+    //multidex
+    implementation 'com.android.support:multidex:1.0.3'
+
+
+    //Android Core
+    implementation "androidx.cardview:cardview:$rootProject.cardViewVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerviewVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageViewVersion"
+
+    //Jetpack
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifeCycleVersion"
+    implementation "android.arch.lifecycle:viewmodel:$rootProject.lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifeCycleVersion"
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
+    implementation "androidx.core:core-ktx:$rootProject.corektxVersion"
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    // appcompat
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+
+    // material
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    // gson
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+
+    //OKHTTP
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+
+    // Dynamic Feature Module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+
+
+}
